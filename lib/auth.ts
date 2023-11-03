@@ -29,5 +29,9 @@ const productionProviders = [
 export const authOptions: AuthOptions = {
   providers: process.env.VERCEL_ENV === 'preview' ? previewProviders : productionProviders,
   secret: process.env.NEXTAUTH_SECRET as string,
+  session: {
+    strategy: 'jwt',
+    maxAge: 30 * 24 * 60 * 60,
+  },
   adapter: PrismaAdapter(prisma),
 }
