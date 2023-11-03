@@ -20,8 +20,10 @@ export default function Page() {
           Back
         </Button>
       </div>
-      <div className="flex m-auto w-full flex-col justify-center space-y-6 sm:w-[350px]">
-        <UserAuthForm />
+      <div className="flex flex-1 justify-center items-center">
+        <div className="w-full max-w-md">
+          <UserAuthForm />
+        </div>
       </div>
     </div>
   );
