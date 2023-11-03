@@ -7,7 +7,7 @@ export default async function Page() {
   const user = await getCurrentUser();
 
   if (!user) {
-    redirect(authOptions?.pages?.signIn || "/sign-in");
+    redirect(authOptions?.pages?.signIn || "/");
   }
 
   return (
