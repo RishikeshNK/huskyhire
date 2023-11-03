@@ -7,6 +7,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Company {
+  id            String   @id @default(uuid())
+  name          String
+  location      String?
+  averageRating Float?
+  reviews       Review[]
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+}
+
+model Review {
+  id         String   @id @default(uuid())
+  companyId  String
+  userId     String
+  rating     Int
+  role       String
+  content    String
+  semester   Semester
+  year       Int
+  drugTested Boolean
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  company Company @relation(fields: [companyId], references: [id])
+  user    User    @relation(fields: [userId], references: [id])
+}
+
 model Account {
   id                String   @id @default(uuid())
   userId            String   @unique
@@ -45,6 +72,7 @@ model User {
   sessions      Session[]
   createdAt     DateTime  @default(now()) @map("created_at")
   updatedAt     DateTime  @updatedAt @map("updated_at")
+  Review        Review[]
 
   @@map("users")
 }
@@ -55,4 +83,10 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+enum Semester {
+  SPRING
+  FALL
+  SUMMER
 }
