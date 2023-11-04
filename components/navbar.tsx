@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
-import Link from "next/link";
-import ModeToggle from "./mode-toggle";
-import { Button } from "./ui/button";
+import Link from 'next/link';
+import ModeToggle from './mode-toggle';
+import { Button } from './ui/button';
 
 export default function Navbar() {
   return (
