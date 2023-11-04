@@ -1,7 +1,7 @@
 import { authOptions } from '@/lib/auth';
 import * as z from 'zod';
 import prisma from '@/lib/db';
-import { getServerSession } from 'next-auth';
+import { getServerSession } from 'next-auth/next';
 import { NextResponse } from 'next/server';
 
 const companyCreateSchema = z.object({
